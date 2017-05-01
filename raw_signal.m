@@ -4,7 +4,7 @@ clc
 % convert frames in cell/structure format to 2D matrix
      %Dir=['/Users/nadavivzan/Dropbox/Mandel lab/VSDI_code/monitor_0/'];  
      Dir=['C:\Users\User\Dropbox\Mandel lab\VSDI data\2017.04.19\E3'];
- %    mtx=frms2mat(Dir); 
+     mtx=frms2mat(Dir); 
      %load E3.mat 
 %   
 [t_trig0, t_photod0]=find_trg([Dir '\E3.bin']);
