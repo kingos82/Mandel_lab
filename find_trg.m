@@ -10,10 +10,11 @@ function [t_trig, t_photod]=find_trg(Dir);
     fs=2.75*1000;
     w=[20/(fs/2) 30/(fs/2)];
     b=fir1(100,w,'bandpass');
-    ch0=filtfilt(b,1,((ch(1,:)/max(ch(1,:)))-min((ch(1,:)/max(ch(1,:)))))-mean(((ch(1,:)/max(ch(1,:)))-min((ch(1,:)/max(ch(1,:)))))));
+    ch0=filtfilt(b,1,((ch(1,:)/max(ch(1,:)))-min((ch(1,:)/max(ch(1,:)))))...
+        -mean(((ch(1,:)/max(ch(1,:)))-min((ch(1,:)/max(ch(1,:)))))));
     plot(t,[ch0; ch(2,:)])
-    %trsh=input('What is the threshold?');
-    trsh=0.3;
+    trsh=input('What is the threshold?');
+    %trsh=0.3;
     ch1=ch0>trsh;
     ch2=diff(ch1);
     ch2(ch2==-1)=0;
@@ -25,4 +26,4 @@ function [t_trig, t_photod]=find_trg(Dir);
     ch5(ch5==-1)=0;  
     t_trig= find(ch5==1)./5000;
     hold on
-    plot(t,[0 ch2; 0 ch5], '*');
+    plot(t,trsh.*[0 ch2; 0 ch5], '*');
