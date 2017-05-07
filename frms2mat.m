@@ -9,8 +9,6 @@ for k=1:length(SignalFiles)
     names{k}=fieldnames(loaded{k});
 end
 
-
-
 for k=1:length(SignalFiles)
     count_stim1=1;
     mtx{k}=zeros(85.^2,3000);    
